@@ -2,6 +2,7 @@
   "name": "seethefeed.com",
   "version": "0.1.0",
   "description": "Preview, Test & Lint your RSS/Atom Feeds",
+  "homepage": "http://seethefeed.com",
   "main": "app.js",
   "scripts": {
     "test": "grunt test"
@@ -10,6 +11,7 @@
     "type": "git",
     "url": "https://github.com/rodaine/See-The-Feed/"
   },
+  "bugs": "https://github.com/rodaine/See-The-Feed/issues",
   "keywords": [
     "rss",
     "atom",
