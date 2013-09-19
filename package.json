@@ -1,0 +1,26 @@
+{
+  "name": "seethefeed.com",
+  "version": "0.1.0",
+  "description": "Preview, Test & Lint your RSS/Atom Feeds",
+  "main": "app.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rodaine/See-The-Feed/"
+  },
+  "keywords": [
+    "rss",
+    "atom",
+    "feed",
+    "lint",
+    "preview",
+    "test"
+  ],
+  "license": "GPL v3",
+  "contributors": [
+    "Taylor Gorman <me@taylorpatrickgorman.com> (http://taylorpatrickgorman.com)",
+    "Chris Roche <rodaine@gmail.com> (http://www.rodaine.com)"
+  ]
+}
