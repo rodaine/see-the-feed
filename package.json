@@ -24,5 +24,15 @@
   "contributors": [
     "Taylor Gorman <me@taylorpatrickgorman.com> (http://taylorpatrickgorman.com)",
     "Chris Roche <rodaine@gmail.com> (http://www.rodaine.com)"
-  ]
+  ],
+  "devDependencies": {
+    "grunt": "latest",
+    "grunt-contrib-coffee": "latest",
+    "grunt-contrib-connect": "latest",
+    "grunt-contrib-jasmine": "latest",
+    "grunt-contrib-watch": "latest",
+    "grunt-requirejs": "latest",
+    "grunt-template-jasmine-requirejs": "latest",
+    "grunt-text-replace": "latest"
+  }
 }
