@@ -5,6 +5,7 @@
   "homepage": "http://seethefeed.com",
   "main": "app.js",
   "scripts": {
+		"start": "node app.js",
     "test": "grunt test"
   },
   "repository": {
