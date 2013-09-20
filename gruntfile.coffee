@@ -49,11 +49,11 @@ module.exports = (grunt) ->
 
 			lib:
 				files: ['<%= coffeeLib %>**/*.coffee']
-				tasks: ['coffee:lib', 'test']
+				tasks: ['coffee:lib', 'mochaTest']
 
 			public:
 				files: ['<%= coffeePublic %>**/*.coffee']
-				tasks: ['coffee:public', 'test']
+				tasks: ['coffee:public']
 
 #------------------------------------------------------------------------------
 # Bootstrap
