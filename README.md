@@ -1,4 +1,4 @@
-See-The-Feed
-============
+# See-The-Feed [![Build Status](https://travis-ci.org/rodaine/See-The-Feed.png)](https://travis-ci.org/rodaine/See-The-Feed) #
 
-Preview, Test &amp; Lint your RSS/Atom Feeds
+*Preview, Test & Lint your RSS/Atom Feeds*
+
