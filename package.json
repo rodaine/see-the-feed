@@ -5,7 +5,8 @@
   "homepage": "http://seethefeed.com",
   "main": "app.js",
   "scripts": {
-		"start": "node app.js",
+    "install": "grunt install",
+    "start": "node ./lib/app.js",
     "test": "grunt test"
   },
   "repository": {
@@ -30,14 +31,17 @@
     "grunt": "latest",
     "grunt-contrib-coffee": "latest",
     "grunt-contrib-connect": "latest",
-    "grunt-contrib-jasmine": "latest",
     "grunt-contrib-watch": "latest",
     "grunt-requirejs": "latest",
     "grunt-template-jasmine-requirejs": "latest",
     "grunt-text-replace": "latest",
     "mocha": "latest",
-		"grunt-mocha": "latest",
-		"grunt-mocha-test": "latest",
-		"should": "latest"
+    "grunt-mocha": "latest",
+    "grunt-mocha-test": "latest",
+    "should": "latest"
+  },
+  "dependencies": {
+    "express": "~3.4.0",
+    "underscore": "~1.5.2"
   }
 }

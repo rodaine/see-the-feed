@@ -1,21 +1,79 @@
 module.exports = (grunt) ->
 	grunt.initConfig
-		pkg: grunt.file.readJSON 'package.json'
-		
+		mochaUI:       'bdd'
+		mochaReporter: 'dot'
+
+		coffeeLib:    'src/lib/'
+		coffeePublic: 'src/public/'
+
+#------------------------------------------------------------------------------
+# Coffeescript Compiling
+#------------------------------------------------------------------------------
+
+		coffee:
+			options:
+				bare: true
+
+			lib:
+				expand: true
+				cwd: '<%= coffeeLib %>'
+				src: ['**/*.coffee']
+				dest: 'lib/'
+				ext: '.js'
+
+
+			public:
+				expand: true
+				cwd: '<%= coffeePublic %>'
+				src: ['**/*.coffee']
+				dest: '_public/scripts'
+				ext: '.js'
+
+#------------------------------------------------------------------------------
+# Mocha (Server-Side) Testing
+#------------------------------------------------------------------------------
+
+		mochaTest:
+			options: 
+				globals: ['should']
+				timeout: 3000
+				ignoreLeaks: false
+				growl: true
+				ui: '<%= mochaUI %>'
+				reporter: '<%= mochaReporter %>'
+			lib:
+				src: ['lib/tests/**/*.js']
+
+
+		watch:
+
+			lib:
+				files: ['<%= coffeeLib %>**/*.coffee']
+				tasks: ['coffee:lib', 'test']
+
+			public:
+				files: ['<%= coffeePublic %>**/*.coffee']
+				tasks: ['coffee:public', 'test']
+
+#------------------------------------------------------------------------------
+# Bootstrap
+#------------------------------------------------------------------------------
+	
 	load = [
+		#'grunt-contrib-connect'
+		#'grunt-mocha'
+		#'grunt-requirejs'
+		#'grunt-text-replace'
 		'grunt-contrib-coffee'
-		'grunt-contrib-connect'
-		'grunt-contrib-jasmine'
 		'grunt-contrib-watch'
-		'grunt-requirejs'
-		'grunt-text-replace'
-		'grunt-mocha'
 		'grunt-mocha-test'
 	]
 
 	register =
-		test: []
-		default: []
+		default: ['coffee', 'mochaTest']
+		install: ['coffee']
+		test:    ['mochaTest']
+
 
 	grunt.loadNpmTasks(task) for task in load
 	grunt.registerTask(key, value) for key, value of register
