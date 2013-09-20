@@ -5,7 +5,7 @@
   "homepage": "http://seethefeed.com",
   "main": "app.js",
   "scripts": {
-    "install": "grunt install",
+    "prepublish": "grunt install",
     "start": "node ./lib/app.js",
     "test": "grunt test"
   },
