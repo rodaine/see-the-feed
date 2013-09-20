@@ -71,8 +71,7 @@ module.exports = (grunt) ->
 
 	register =
 		default: ['coffee', 'mochaTest']
-		install: ['coffee']
-		test:    ['mochaTest']
+		test:    ['coffee', 'mochaTest']
 
 
 	grunt.loadNpmTasks(task) for task in load
