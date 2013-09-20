@@ -1,9 +1,10 @@
-http = require 'http'
+env    = process.env.NODE_ENV || 'development'
+config = require('./config/config')(env)
+pkg    = require('../package.json')
 
-server = http.createServer (req, res) ->
-	res.writeHead 200, { 'Content-Type': 'text/plain' }
-	res.end 'Hello World\n'
+app = require('express')()
 
-server.listen 8888, '0.0.0.0'
+app.listen config.port, config.host
 
-console.log 'Server running!'
+if config.show_debug
+	console.log "#{pkg.name} (version #{pkg.version}) started in #{env} on #{config.host}:#{config.port}"
