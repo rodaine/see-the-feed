@@ -46,10 +46,6 @@ defaults =
 	# path to the favicon icon relative to the public_path
 	favicon: ''
 
-	# session secret for 'securing' the client-side cookie
-	session_secret: secret
-
-
 ###*
  * Environment specific values for the default variables
  * @type {object}
@@ -70,4 +66,6 @@ envs =
 module.exports = (env) ->
 	config = _.defaults envs[env] || {}, defaults
 	config.env = env
+	config.session_secret = secret
+	config.pkg = require '../../package.json'
 	config

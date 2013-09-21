@@ -20,7 +20,17 @@ describe 'Config', ->
 			c.should.have.property('favicon')
 			c.should.have.property('session_secret')
 
-		it 'should have different properties based on the environment specified', ->
+		it 'should show debug messages in dev environment', ->
 			dev = config('development')
 			c.show_debug.should.be.false
 			dev.show_debug.should.be.true
+
+		it 'should have 0.0.0.0 for host in staging environment', ->
+			stg = config('staging')
+			c.host.should.equal '127.0.0.1'
+			stg.host.should.equal '0.0.0.0'
+
+		it 'should hold a reference to the npm package object', ->
+			c.should.have.property('pkg')
+			c.pkg.should.have.property('name')
+			c.pkg.should.have.property('version')
