@@ -68,7 +68,7 @@ module.exports = (app, config) ->
 
 	# catch 500ish errors
 	app.use (err, req, res, next) ->
-		console.error err if config.showDebug
+		console.error err if config.show_debug
 		res.send(500, 'Something broke...')
 
 	# and 404s if we get here...
