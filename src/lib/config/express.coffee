@@ -23,7 +23,7 @@ module.exports = (app, config) ->
 
 	# compress all ascii/utf8 files using gzip/deflate
 	app.use express.compress
-		filter: (req, res) -> return /json|text|javascript|css/.test(res.getHeader('Content-Type'))
+		filter: (req, res) -> /json|text|javascript|css/.test(res.getHeader('Content-Type'))
 		level: 9
 
 	# uses the favicon specified in the config. 
