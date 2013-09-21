@@ -7,6 +7,9 @@ app = require('express')()
 # bootstrap express properties
 require('./config/express')(app, config)
 
+#setup resourceful routing & bootstrap routes
+require('express-resource')
+require('./config/routes')(app, config)
 
 # listen on the configured port & host (usually local, but 0.0.0.0 for nitrous.io)
 app.listen config.port, config.host, ->
