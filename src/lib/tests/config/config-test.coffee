@@ -19,11 +19,17 @@ describe 'Config', ->
 			c.should.have.property('show_debug')
 			c.should.have.property('favicon')
 			c.should.have.property('session_secret')
+			c.should.have.property('view_cache')
 
 		it 'should show debug messages in dev environment', ->
 			dev = config('development')
 			c.show_debug.should.be.false
 			dev.show_debug.should.be.true
+
+		it 'should not use a view cache in dev environment', ->
+			dev = config('development')
+			c.view_cache.should.be.ok
+			dev.view_cache.should.not.be.ok
 
 		it 'should have 0.0.0.0 for host in staging environment', ->
 			stg = config('staging')

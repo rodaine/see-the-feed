@@ -19,6 +19,7 @@ module.exports = (app, config) ->
 
 	# specify the view engine to used
 	app.set 'view engine', config.view_engine
+	app.set 'view cache', config.view_cache if config.view_cache
 
 	# compress all ascii/utf8 files using gzip/deflate
 	app.use express.compress
@@ -57,6 +58,7 @@ module.exports = (app, config) ->
 	# csrf protection unless developing (for tests)
 	app.use(express.csrf()) unless 'development' == config.env
 
+	# no one needs to know that. Keep it to yourself, Express.
 	app.use (req, res, next) ->
 		res.removeHeader 'X-Powered-By'
 		next()

@@ -34,6 +34,9 @@ defaults =
 	# view engine to use for this project
 	view_engine: 'jade'
 
+	# cache location for view files, set to falsey value to prevent caching
+	view_cache: root + '/view_cache'
+
 	# host ip to use for the application
 	host: '127.0.0.1'
 
@@ -57,6 +60,7 @@ envs =
 
 	development:
 		show_debug: true
+		view_cache: false
 
 ###*
  * Builds and returns the config object from the default and provided environment name
