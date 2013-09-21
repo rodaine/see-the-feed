@@ -8,6 +8,12 @@ path = require 'path'
 root = path.normalize __dirname + '/../..'
 
 ###*
+ * Retrieves the SECRET key from the environment, or defaults to one (which would not be secure.)
+ * @type {string}
+###
+secret = process.env.SECRET || 'Three can keep a secret if two of them are dead'
+
+###*
  * Default config variables shared by all environments
  * @type {object}
 ###
@@ -36,6 +42,12 @@ defaults =
 
 	# whether or not to print certain debug messages to the console.
 	show_debug: false
+
+	# path to the favicon icon relative to the public_path
+	favicon: ''
+
+	# session secret for 'securing' the client-side cookie
+	session_secret: secret
 
 
 ###*

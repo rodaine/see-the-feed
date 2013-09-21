@@ -17,6 +17,8 @@ describe 'Config', ->
 			c.should.have.property('host')
 			c.should.have.property('port')
 			c.should.have.property('show_debug')
+			c.should.have.property('favicon')
+			c.should.have.property('session_secret')
 
 		it 'should have different properties based on the environment specified', ->
 			dev = config('development')
