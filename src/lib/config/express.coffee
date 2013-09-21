@@ -35,10 +35,10 @@ module.exports = (app, config) ->
 	# log request information to the console
 	app.use express.logger('dev') if config.show_debug
 
-	# adds the package object to the response 
+	# adds the config object to the response 
 	# for easy access while processing.
 	app.use (req, res, next) ->
-		res.locals.pkg = pkg
+		res.locals.config = config
 		next()
 
 	# parses and stores cookies on the req
