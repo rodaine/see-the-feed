@@ -56,6 +56,7 @@ defaults =
 envs = 
 
 	staging:
+		show_debug: true
 		host: '0.0.0.0'
 
 	development:
