@@ -1,6 +1,6 @@
 
 ###*
- * Just passes on the reqeust to the next route/middleware/handler.
+ * Just passes on the request to the next route/middleware/handler.
  * @param  {object}   req  The request object
  * @param  {object}   res  The response object
  * @param  {Function} next Pass req/res to the next route
