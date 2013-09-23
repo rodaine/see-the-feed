@@ -2,7 +2,7 @@ BaseController = require './base'
 FeedParser = require 'feedparser'
 request = require 'request'
 
-class FeedController extends BaseController
+module.exports = class FeedController extends BaseController
 
 	index: (req, res) ->
 		res.redirect 301, '/'
@@ -13,4 +13,3 @@ class FeedController extends BaseController
 
 
 
-module.exports = new FeedController
