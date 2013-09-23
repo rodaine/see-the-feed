@@ -45,6 +45,7 @@
     "express-resource": "~1.0.0",
     "jade": "~0.35.0",
     "feedparser": "~0.16.1",
-    "request": "~2.27.0"
+    "request": "~2.27.0",
+    "resumer": "0.0.0"
   }
 }
