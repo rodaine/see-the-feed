@@ -20,6 +20,7 @@ describe 'Config', ->
 			c.should.have.property('favicon')
 			c.should.have.property('session_secret')
 			c.should.have.property('view_cache')
+			c.should.have.property('csrf')
 
 		it 'should show debug messages in dev environment', ->
 			dev = config('development')

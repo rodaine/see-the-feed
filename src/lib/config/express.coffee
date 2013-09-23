@@ -56,7 +56,7 @@ module.exports = (app, config) ->
 		secret: config.session_secret
 
 	# csrf protection unless developing (for tests)
-	app.use(express.csrf()) unless 'development' == config.env
+	app.use(express.csrf()) if config.csrf
 
 	# no one needs to know that. Keep it to yourself, Express.
 	app.use (req, res, next) ->

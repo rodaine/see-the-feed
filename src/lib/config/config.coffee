@@ -48,6 +48,9 @@ defaults =
 
 	# path to the favicon icon relative to the public_path
 	favicon: ''
+	
+	# provide CSRF protection on requests
+	csrf: true
 
 ###*
  * Environment specific values for the default variables
@@ -58,10 +61,12 @@ envs =
 	staging:
 		show_debug: true
 		host: '0.0.0.0'
+		csrf: false
 
 	development:
 		show_debug: true
 		view_cache: false
+		csrf: false
 
 ###*
  * Builds and returns the config object from the default and provided environment name
