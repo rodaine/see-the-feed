@@ -101,7 +101,7 @@ module.exports = class FeedController extends BaseController
 	###
 	streamRedirect: (feed, res) -> ->
 		console.log "Redirect on feed stream" if res.locals.config.show_debug
-		#feed.addRedirect @redirects[@redirects.length - 1]
+		feed.addRedirect @redirects[@redirects.length - 1]
 
 
 	###*

@@ -19,6 +19,6 @@ module.exports = class Feed
 
 	addNotice: (message) -> @_addMessage 'notice', message
 
-	addRedirect: ->
-		@redirects = @redirects || 0
-		++@redirects
+	addRedirect: (redirect) ->
+		@redirects = @redirects || []
+		@redirects.push redirect
