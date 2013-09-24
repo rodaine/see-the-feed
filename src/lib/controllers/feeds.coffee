@@ -42,13 +42,13 @@ module.exports = class FeedController extends BaseController
 			return
 
 		stream
-			.on('error',    @streamError(feed, res))
-			.on('redirect', @streamRedirect(feed, res))
+			.on('error',    @handleStreamError(feed, res))
+			.on('redirect', @handleStreamRedirect(feed, res))
 			.pipe(new FeedParser)
-				.on('error',    @feedError(feed, res))
-				.on('meta',     @feedMeta(feed, res))
-				.on('readable', @feedReadable(feed, res))
-				.on('end',      @feedEnd(feed, res))
+				.on('error',    @handleFeedError(feed, res))
+				.on('meta',     @handleFeedMeta(feed, res))
+				.on('readable', @handleFeedReadable(feed, res))
+				.on('end',      @handleFeedEnd(feed, res))
 
 
 	###*
@@ -89,7 +89,7 @@ module.exports = class FeedController extends BaseController
 	 * Handle any errors from the in-bound Stream
 	 * @param  {object} error The error object from the stream
 	###
-	streamError: (feed, res) -> (error) ->
+	handleStreamError: (feed, res) -> (error) ->
 		msg = utils.format "Uhm, ran into an issue reading all that XML ⋯ %s", e
 		console.error msg if res.locals.config.show_debug
 		feed.addError msg
@@ -99,7 +99,7 @@ module.exports = class FeedController extends BaseController
 	###*
 	 * Handle & collect any redirects from the in-bound Stream
 	###
-	streamRedirect: (feed, res) -> ->
+	handleStreamRedirect: (feed, res) -> ->
 		console.log "Redirect on feed stream" if res.locals.config.show_debug
 		feed.addRedirect @redirects[@redirects.length - 1]
 
@@ -108,7 +108,7 @@ module.exports = class FeedController extends BaseController
 	 * Handle any errors when the parser attempts to read the feed XML
 	 * @param  {object} error The error object from FeedParser
 	###
-	feedError: (feed, res) -> (error) ->
+	handleFeedError: (feed, res) -> (error) ->
 		console.log "Feed Error: #{error}"
 
 
@@ -116,14 +116,14 @@ module.exports = class FeedController extends BaseController
 	 * Handle the meta from the feed
 	 * @param  {object} meta Parsed feed metadata
 	###
-	feedMeta: (feed, res) -> (meta) ->
+	handleFeedMeta: (feed, res) -> (meta) ->
 		console.log "Meta Recieved"
 
 
 	###*
 	 * Handles readable data returned from FeedParser (the articles)
 	###
-	feedReadable: (feed, res) -> ->
+	handleFeedReadable: (feed, res) -> ->
 		stream = @
 		while item = stream.read()
 			console.log "#{item.title}"
@@ -133,6 +133,6 @@ module.exports = class FeedController extends BaseController
 	 * Handles reaching the end of the feed articles and closes out the response
 	 * @param  {object} res The HTTP Response object
 	###
-	feedEnd: (feed, res) -> ->
+	handleFeedEnd: (feed, res) -> ->
 		console.log 'Done processing feed.' if res.locals.config.show_debug
 		res.json feed
