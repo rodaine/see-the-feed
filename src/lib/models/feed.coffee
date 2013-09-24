@@ -22,3 +22,6 @@ module.exports = class Feed
 	addRedirect: (redirect) ->
 		@redirects = @redirects || []
 		@redirects.push redirect
+
+	setRaw: (@raw) ->
+		# TODO: Prettify the XML
