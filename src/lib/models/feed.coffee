@@ -1,23 +1,24 @@
 
 module.exports = class Feed
 
+	# method:   undefined
 	# raw:      undefined
-	# errors:   undefined
-	# warnings: undefined
-	# notices:  undefined
 	# meta:     undefined
 	# articles: undefined
 
-	constructor: (@method) ->
-		@errors   = []
-		@warnings = []
-		@notices  = []
+	constructor: () ->
+		@messages = {}
 
 	_addMessage: (level, message) ->
-		@[level]?.push message
+		@messages[level] = @messages[level] || []
+		@messages[level]?.push message
 
 	addError: (message) -> @_addMessage 'errors', message
 
 	addWarning: (message) -> @_addMessage 'warnings', message
 
 	addNotice: (message) -> @_addMessage 'notice', message
+
+	addRedirect: ->
+		@redirects = @redirects || 0
+		++@redirects
