@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Preview, Test & Lint your RSS/Atom Feeds",
   "homepage": "http://seethefeed.com",
-  "main": "app.js",
+  "main": "./lib/app.js",
   "scripts": {
     "start": "node ./lib/app.js",
     "test": "grunt test"
@@ -37,7 +37,8 @@
     "mocha": "latest",
     "grunt-mocha": "latest",
     "grunt-mocha-test": "latest",
-    "should": "latest"
+    "should": "latest",
+    "grunt-nodemon": "~0.1.1"
   },
   "dependencies": {
     "express": "~3.4.0",
