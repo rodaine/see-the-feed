@@ -1,5 +1,7 @@
 BaseController = require './base'
 Feed           = require '../models/feed'
+FeedMeta       = require '../models/feedMeta'
+FeedItem       = require '../models/feedItem'
 FeedParser     = require 'feedparser'
 request        = require 'request'
 resumer        = require 'resumer'
@@ -57,10 +59,11 @@ module.exports = class FeedController extends BaseController
 	 * @return {object}     Readable stream
 	###
 	getUrlStream: (url, feed, res) ->
-		feed.method = 'url'
+		feed.setMethod 'url'
 		return request url, (error, response, body) ->
+			feed.setCode response.statusCode
 			if error
-				msg = util.format 'Hey, having some issues grabbing your feed ⋯ %s', error.message
+				msg = util.format 'HTTP Stream Error: %s', error.message
 				console.error msg if res.locals.config.show_debug
 				feed.addError msg
 				res.json feed
@@ -74,12 +77,14 @@ module.exports = class FeedController extends BaseController
 	 * @return {object}     Readable stream
 	###
 	getXmlStream: (xml, feed, res) ->
-		feed.method = 'xml'
+		feed.setMethod = 'xml'
+		feed.setCode 200
 		feed.setRaw xml
 		try
 			return resumer().queue(xml).end()
 		catch e
-			msg = utils.format "Yo, having some trouble grabbing that XML you gave me ⋯ %s", e
+			feed.setCode 0
+			msg = utils.format "XML Stream Error: %s", e.message
 			console.error msg if res.locals.config.show_debug
 			feed.addError msg
 			res.json feed
@@ -90,7 +95,7 @@ module.exports = class FeedController extends BaseController
 	 * @param  {object} error The error object from the stream
 	###
 	handleStreamError: (feed, res) -> (error) ->
-		msg = utils.format "Uhm, ran into an issue reading all that XML ⋯ %s", e
+		msg = utils.format "Stream Error: %s", error.message
 		console.error msg if res.locals.config.show_debug
 		feed.addError msg
 		res.json feed
@@ -100,7 +105,7 @@ module.exports = class FeedController extends BaseController
 	 * Handle & collect any redirects from the in-bound Stream
 	###
 	handleStreamRedirect: (feed, res) -> ->
-		console.log "Redirect on feed stream" if res.locals.config.show_debug
+		console.log "Stream Redirect" if res.locals.config.show_debug
 		feed.addRedirect @redirects[@redirects.length - 1]
 
 
@@ -109,7 +114,9 @@ module.exports = class FeedController extends BaseController
 	 * @param  {object} error The error object from FeedParser
 	###
 	handleFeedError: (feed, res) -> (error) ->
-		console.log "Feed Error: #{error}"
+		msg = util.format "Feed Error: %s", error.message
+		console.log msg if res.locals.config.show_debug
+		feed.addError msg
 
 
 	###*
@@ -117,16 +124,17 @@ module.exports = class FeedController extends BaseController
 	 * @param  {object} meta Parsed feed metadata
 	###
 	handleFeedMeta: (feed, res) -> (meta) ->
-		console.log "Meta Recieved"
+		console.log "Feed Meta Received" if res.locals.config.show_debug
+		feed.setMeta new FeedMeta meta
 
 
 	###*
 	 * Handles readable data returned from FeedParser (the articles)
 	###
 	handleFeedReadable: (feed, res) -> ->
-		stream = @
-		while item = stream.read()
-			console.log "#{item.title}"
+		while item = @.read()
+			console.log "Feed Item Received: #{item.title}" if res.locals.config.show_debug
+			feed.addItem new FeedItem item
 
 
 	###*
