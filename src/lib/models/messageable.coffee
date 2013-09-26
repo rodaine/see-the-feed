@@ -10,4 +10,4 @@ module.exports = class Messageable
 
 	addWarning: (message) -> addMessage @, 'warnings', message
 
-	addNotice: (message) -> addMessage @, 'notice', message
+	addNotice: (message) -> addMessage @, 'notices', message
