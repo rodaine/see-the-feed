@@ -1,4 +1,6 @@
-module.exports = class FeedItem
+Messageable = require './messageable'
+
+module.exports = class FeedItem extends Messageable
 		
 	constructor: (@raw) ->
 		
