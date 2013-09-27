@@ -24,6 +24,12 @@ module.exports = class FeedController extends BaseController
 
 	###*
 	 * Handles POST requests to grab the feed
+	 *
+	 * The handler is expecting one of two parameters past in the request body:
+	 *   url - A url to a feed to be requested and validated
+	 *   xml - The raw xml of a feed to parse
+	 * The xml method is MUUUUCH faster without the additional HTTP request(s)
+	 * 
 	 * @param  {object} req The request object
 	 * @param  {object} res The response object
 	###
