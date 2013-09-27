@@ -51,3 +51,27 @@ describe 'Models', ->
 			should.exist msg.messages.notices
 			msg.messages.notices.should.have.length 1
 			msg.messages.notices.should.include ntc
+
+
+		it 'should be inflatable to include empty but defined versions of all message levels', ->
+			msg.inflate()
+
+			should.exist msg.messages
+			should.exist msg.messages.errors
+			should.exist msg.messages.warnings
+			should.exist msg.messages.notices
+
+			msg.messages.errors.should.have.length 0
+			msg.messages.warnings.should.have.length 0
+			msg.messages.notices.should.have.length 0
+
+
+		it 'should not delete preexisting messages on inflate', ->
+			err = 'This is an error'
+
+			msg.addError err
+			msg.inflate()
+
+			msg.messages.errors.should.have.length 1
+			msg.messages.errors.should.include err
+
