@@ -149,5 +149,7 @@ module.exports = class FeedController extends BaseController
 	 * @param  {object} res The HTTP Response object
 	###
 	handleFeedEnd: (feed, res) -> ->
+		feed.inflate()
+		feed.validate()
 		console.log 'Done processing feed.' if res.locals.config.show_debug
 		res.json feed
