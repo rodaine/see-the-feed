@@ -46,7 +46,7 @@ module.exports = class FeedController extends BaseController
 		stream
 			.on('error',    @handleStreamError(feed, res))
 			.on('redirect', @handleStreamRedirect(feed, res))
-			.pipe(new FeedParser)
+			.pipe(new FeedParser({ addmeta: false }))
 				.on('error',    @handleFeedError(feed, res))
 				.on('meta',     @handleFeedMeta(feed, res))
 				.on('readable', @handleFeedReadable(feed, res))
