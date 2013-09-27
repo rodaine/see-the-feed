@@ -4,5 +4,5 @@ module.exports = class FeedItem extends Messageable
 		
 	constructor: (@raw) ->
 		
-
+	validate: ->
 	
