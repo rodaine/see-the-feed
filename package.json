@@ -38,7 +38,8 @@
     "grunt-mocha": "latest",
     "grunt-mocha-test": "latest",
     "should": "latest",
-    "grunt-nodemon": "~0.1.1"
+    "grunt-nodemon": "~0.1.1",
+    "sinon": "~1.7.3"
   },
   "dependencies": {
     "express": "~3.4.0",
