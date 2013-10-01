@@ -67,14 +67,18 @@ module.exports = class FeedController extends BaseController
 	getUrlStream: (url, feed, res) ->
 		feed.setMethod 'url'
 		return request url, (error, response, body) ->
-			feed.setCode response.statusCode
 			if error
 				msg = util.format 'HTTP Stream Error: %s', error.message
 				console.error msg if res.locals.config.show_debug
+				if response?.statusCode?
+					feed.setCode response.statusCode
+				else
+					feed.setCode 0
 				feed.addError msg
 				res.json feed
 			else
-					feed.setRaw body
+				feed.setCode response.statusCode
+				feed.setRaw body
 
 
 	###*

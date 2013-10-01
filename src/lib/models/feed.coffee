@@ -97,6 +97,8 @@ module.exports = class Feed extends Messageable
 		super()
 		@items = @items || []
 		@redirects = @redirects || []
+		@meta?.inflate?()
+		item.inflate?() for item in @items
 
 
 	###*
