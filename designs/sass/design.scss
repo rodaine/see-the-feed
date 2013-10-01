@@ -1,0 +1,14 @@
+
+@import url(http://fonts.googleapis.com/css?family=Lato:400,900,400italic,900italic);
+@import url(http://fonts.googleapis.com/css?family=Alegreya:700italic,700);
+
+%font-header {font-family: 'Lato', sans-serif;}
+%font-copy {font-family: 'Alegreya', serif;}
+
+$darkest: #45313C;
+$darkborder: adjust-color($darkest, $lightness:68, $saturation:-10);
+$lightest: #FFFCF5;
+$bodycolor: adjust-color($darkest, $lightness:10, $saturation:-12);
+
+$linkcolor: magenta;
+$linkhovercolor: cyan;

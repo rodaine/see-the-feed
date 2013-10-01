@@ -1,0 +1,12 @@
+
+.message {
+	@extend %font-header;
+	text-align: left;
+	background: rgba($darkborder, .8);
+	padding: .3em 1em .4em;
+	font-size: .875em;
+	@include border-radius(4px);
+
+	&.warning {background: yellow;}
+	&.alert {background: red;}
+}

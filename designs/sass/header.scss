@@ -1,0 +1,28 @@
+
+header.site {
+	width: 100%;
+	position: fixed;
+	z-index: 9;
+	top: 0;
+	left: 0;
+	background: rgba(darken($darkest, 10), .9);
+	@extend %font-header;
+	border-bottom: solid 1px darken($darkest, 10);
+
+	h1, nav {
+		@extend %tcell;
+		font-size: .1em;
+	}
+	h1 {text-transform: uppercase; padding: 0;}
+	nav.view {text-align: center;}
+	nav.site {text-align: right; display: none;}
+	a {
+		font-size: 10em;
+		display: inline-block;
+		color: $lightest;
+		text-align: center;
+		padding: 1.5em .8em;
+
+		&:hover {color: $linkcolor;}
+	}
+}

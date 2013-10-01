@@ -1,0 +1,39 @@
+
+//  COMPASS  ////////////////////////////////////////////////////////////////
+
+@import 'compass/css3/', 'compass/support', 'compass/utilities/general/hacks';
+
+$legacy-support-for-ie: true;
+$legacy-support-for-ie6: false;
+
+//  COLORS  ////////////////////////////////////////////////////////////////
+
+$twitter: #2AB6E9;
+$facebook: #3B5998;
+$linkedin: #0A7AB3;
+$youtube: #BD2F29;
+$instagram: #517FA3;
+$rss: #F79937;
+
+//  BREAK POINTS  ////////////////////////////////////////////////////////////////
+
+$desktoplg: 'min-width:1050px';
+$tabletsm: 'max-width:1000px';
+$mobilelg: 'max-width:700px';
+$mobilesm: 'max-width:450px';
+
+//  EXTEND BLOCKS  ////////////////////////////////////////////////////////////////
+
+%pseudo-triangle {
+	content: '';
+	display: block;
+	width: 0;
+	height: 0;
+	position: absolute;
+	border: solid 10px transparent;
+}
+@mixin placeholder {
+	::-webkit-input-placeholder {@content}
+	::-moz-placeholder {@content}
+	:-ms-input-placeholder {@content}
+}
