@@ -38,6 +38,7 @@ module.exports = class FeedController extends BaseController
 		feed = new Feed
 
 		if req.body.url
+			feed.url = req.body.url
 			stream = @getUrlStream req.body.url, feed, res
 		else if req.body.xml
 			stream = @getXmlStream req.body.xml, feed, res

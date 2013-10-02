@@ -24,6 +24,7 @@ module.exports = class Feed extends Messageable
 	raw: null
 	code: null
 	meta: null
+	url: null
 
 
 	###*
@@ -36,6 +37,7 @@ module.exports = class Feed extends Messageable
 		@redirects.push
 			url: url
 			code: code
+		@url = url
 
 
 	###*
@@ -69,6 +71,7 @@ module.exports = class Feed extends Messageable
 	setMeta: (meta) ->
 		if meta instanceof FeedMeta
 			@meta = meta
+			@meta.feedUrl = @url
 		else
 			throw 'Meta must be an instance of FeedMeta'
 	
