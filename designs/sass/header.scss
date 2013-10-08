@@ -1,28 +1,59 @@
 
-header.site {
+$header-height: 40px;
+
+header.site, header.toolbar {
 	width: 100%;
 	position: fixed;
 	z-index: 9;
-	top: 0;
 	left: 0;
+
+	.table {height: $header-height;}
+	h1, nav {@extend %tcell; padding: 0 .8em;}
+	h1 {width: 100%; font-size: 1em;}
+}
+header.site {
+	top: 0;
 	background: rgba(darken($darkest, 10), .9);
 	@extend %font-header;
 	border-bottom: solid 1px darken($darkest, 10);
 
-	h1, nav {
-		@extend %tcell;
-		font-size: .1em;
-	}
 	h1 {text-transform: uppercase; padding: 0;}
 	nav.view {text-align: center;}
 	nav.site {text-align: right; display: none;}
 	a {
-		font-size: 10em;
 		display: inline-block;
 		color: $lightest;
 		text-align: center;
-		padding: 1.5em .8em;
 
 		&:hover {color: $linkcolor;}
+	}
+}
+header.toolbar {
+	@include background(linear-gradient(rgba($darkborder, .4), rgba($darkborder, .6)));
+	border-bottom: solid 1px $darkborder;
+	top: $header-height + 1;
+
+	h1 {font-weight: 400; text-align: center;}
+	nav.view {
+		text-align: center;
+		@extend %font-header;
+		font-size: .1em;
+		white-space: nowrap;
+
+		a {
+			font-size: 7.5em;
+			background: $lightest;
+			color: adjust-color($darkborder, $lightness:-10, $saturation:-5);
+			border: solid 1px $darkborder;
+			margin-left: -1px;
+			padding: .3em .8em;
+			line-height: 1.1em;
+			display: inline-block;
+			text-transform: uppercase;
+
+			&:first-child {@include border-radius(4px 0 0 4px);}
+			&:last-child {@include border-radius(0 4px 4px 0);}
+			&.selected {background: mix($darkborder, $lightest, 40);}
+		}
 	}
 }

@@ -5,10 +5,17 @@
 %font-header {font-family: 'Lato', sans-serif;}
 %font-copy {font-family: 'Alegreya', serif;}
 
+/*
 $darkest: #45313C;
-$darkborder: adjust-color($darkest, $lightness:68, $saturation:-10);
 $lightest: #FFFCF5;
-$bodycolor: adjust-color($darkest, $lightness:10, $saturation:-12);
+*/
+$darkest: #2F3440;
+$lightest: lighten(#F5E5C0, 10);
+$yellow: #F8CA4D;
+$red: #FF6259;
+$darkborder: adjust-color($darkest, $lightness:68, $saturation:-10);
+$darkborder: mix($darkest, $lightest, 15);
 
+$bodycolor: adjust-color($darkest, $lightness:10, $saturation:-12);
 $linkcolor: magenta;
 $linkhovercolor: cyan;
