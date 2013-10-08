@@ -13,7 +13,8 @@ header.site, header.toolbar {
 }
 header.site {
 	top: 0;
-	background: rgba(darken($darkest, 10), .9);
+	//background: rgba(darken($darkest, 10), .9);
+	background: $darkest;
 	@extend %font-header;
 	border-bottom: solid 1px darken($darkest, 10);
 
@@ -29,12 +30,12 @@ header.site {
 	}
 }
 header.toolbar {
-	@include background(linear-gradient(rgba($darkborder, .4), rgba($darkborder, .6)));
-	border-bottom: solid 1px $darkborder;
+	background: mix($darkborder, $lightest, 30);
+	//border-bottom: solid 1px $darkborder;
 	top: $header-height + 1;
 
 	h1 {font-weight: 400; text-align: center;}
-	nav.view {
+	nav {
 		text-align: center;
 		@extend %font-header;
 		font-size: .1em;
@@ -42,18 +43,22 @@ header.toolbar {
 
 		a {
 			font-size: 7.5em;
-			background: $lightest;
-			color: adjust-color($darkborder, $lightness:-10, $saturation:-5);
+			background: mix($darkborder, $lightest, 80);
+			@include box-shadow(inset 0 2px 4px rgba($darkest, .1));
+				color: mix($darkest, $darkborder, 40);
 			border: solid 1px $darkborder;
 			margin-left: -1px;
-			padding: .3em .8em;
+			padding: .45em .9em;
 			line-height: 1.1em;
 			display: inline-block;
 			text-transform: uppercase;
 
 			&:first-child {@include border-radius(4px 0 0 4px);}
 			&:last-child {@include border-radius(0 4px 4px 0);}
-			&.selected {background: mix($darkborder, $lightest, 40);}
+			&.selected {
+				background: mix($darkborder, $lightest, 22);
+				@include box-shadow(none);
+			}
 		}
 	}
 }

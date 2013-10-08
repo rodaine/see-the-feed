@@ -6,8 +6,9 @@
 	padding: .3em 1em .4em;
 	font-size: .875em;
 	margin: 0 0 .7em;
+	color: $bodycolor !important;
 	@include border-radius(4px);
 
 	&.warning {background: rgba($yellow, .75);}
-	&.alert {background: $red; color: $lightest}
+	&.alert {background: $red; color: $lightest !important;}
 }
