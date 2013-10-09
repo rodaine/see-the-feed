@@ -12,21 +12,28 @@
 
 <body>
 
+<div class="fixed">
+
 <header class="site" role="banner">
 <div class="centered">
 
-	<div class="table">
+	<div class="columns">
+	<div class="column">
 
-	<h1 class="logo"><a href="#">See The Feed</a></h1>
+		<h1 class="logo"><a href="#">See The Feed</a></h1>
 
-	<nav class="site">
-		<a href="#" class="home">Start over</a>
-		<a href="#">Blog</a>
-		<a href="#">Help</a>
-		<a href="#" class="donate">Donate</a>
-	</nav>
+	</div><!-- column -->
+	<div class="column">
 
-	</div><!-- table -->
+		<nav class="site">
+			<a href="#" class="home">Start over</a>
+			<a href="#">Blog</a>
+			<a href="#">Help</a>
+			<a href="#" class="donate">Donate</a>
+		</nav>
+
+	</div><!-- column -->
+	</div><!-- columns -->
 
 </div><!-- centered -->
 </header><!-- site -->
@@ -34,24 +41,34 @@
 <header class="toolbar">
 <div class="centered">
 
-	<div class="table">
+	<div class="columns">
+	<div class="column">
 
-	<nav class="view">
-		<a href="#" class="selected">Layout</a>
-		<a href="#">XML</a>
-	</nav>
+		<nav class="view">
+			<a href="#" class="selected">Layout</a>
+			<a href="#">XML</a>
+		</nav>
 
-	<h1>Clark/Nikdel/Powell</h1>
+	</div><!-- column -->
+	<div class="column">
 
-	<nav class="messages">
-		<a href="#" class="selected">On</a>
-		<a href="#">Off</a>
-	</nav>
+		<h1>Clark/Nikdel/Powell</h1>
 
-	</div><!-- table -->
+	</div><!-- column -->
+	<div class="column">
+
+		<nav class="messages-toggle">
+			<a href="#" class="selected">On</a>
+			<a href="#">Off</a>
+		</nav>
+
+	</div><!-- column -->
+	</div><!-- columns -->
 
 </div><!-- centered -->
 </header><!-- toolbar -->
+
+</div><!-- fixed -->
 
 <div class="main" role="main">
 <div class="centered">
@@ -60,13 +77,15 @@
 
 		<h1 class="title">Clark/Nikdel/Powell</h1>
 
+	</div><!-- feed-title -->
+
+	<div class="messages">
 		<p class="message alert">Do you know how many time's I've walked to the court</p>
 		<p class="message alert">and thought "Today's the day. I'm gonna dunk a basketball."</p>
 		<p class="message warning">I didn't have any role models that were my height.</p>
 		<p class="message notice">Just because a road doesn't have pavement on it, doesn't mean you can't walk on it.</p>
 		<p class="message notice">Finally I'm in a rap feud. We're at Defkanye 5.</p>
-
-	</div><!-- feed-title -->
+	</div>
 
 	<div class="post">
 
@@ -77,6 +96,7 @@
 			<h1 class="title">What does being a good friend have to do with writing good copy?</h1>
 
 		</div><!-- post-data -->
+
 		<div class="messages">
 			<p class="message alert">Fly to Montreal, bone a stranger, slump over.</p>
 			<p class="message alert">Your mission should you choose to accept it, is to turn your life around.</p>
@@ -84,6 +104,7 @@
 			<p class="message warning">Pick your easiest, no brainer case and work on it till it's done.</p>
 			<p class="message notice">Let me show you what could happen if you don't make a change.</p>
 		</div>
+
 		<div class="post-content">
 
 			<p class="summary">More than you think. You don't have to paint your readers' nails or watch True Blood together, but you do have to make them feel special.</p>
@@ -130,6 +151,9 @@
 
 <footer class="site">
 </footer>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script type="text/javascript" src="scripts/all.min.js"></script>
 
 </body>
 
