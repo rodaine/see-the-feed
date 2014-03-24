@@ -3,7 +3,6 @@
 	text-align: center;
 	border-bottom: solid 1px $darkborder;
 	position: relative;
-	margin-bottom: $spacing;
 
 	h1 {
 		padding: 1.5em 0;
@@ -17,8 +16,7 @@
 }
 .post-data {
 	@extend %font-header;
-	padding: 1.75em 0;
-	margin-bottom: 1.75em;
+	padding: 1.75em 0 1.9em;
 	text-align: center;
 	@extend %small-border;
 
@@ -28,4 +26,7 @@
 		color: adjust-color($bodycolor, $lightness:35);
 	}
 	h1.title {padding-top: .3em;}
+}
+.post-content {
+	padding: 1em 0 0;
 }

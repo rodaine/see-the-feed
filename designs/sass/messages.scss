@@ -1,12 +1,16 @@
 
 .messages {
 	@extend %small-border;
-	padding-bottom: 1px;
-	@include transition(height, 300ms);
 	overflow: hidden;
 	height: 300px;
+	top: -1px;
+	@include transition(height, 300ms);
 
-	&.hide {height: 0;}
+	&.hide {
+		height: 0;
+
+		&:after {display: none;}
+	}
 }
 .message {
 	@extend %font-header;
@@ -14,10 +18,11 @@
 	background: rgba($darkborder, .8);
 	padding: .3em 1em .4em;
 	font-size: .875em;
-	margin: 0 0 .7em;
+	margin-top: .7em;
 	color: $bodycolor !important;
 	@include border-radius(4px);
 
+	&:first-child {margin-top: $spacing;}
 	&:last-child {margin-bottom: $spacing;}
 	&.warning {background: rgba($yellow, .75);}
 	&.alert {background: $red; color: $lightest !important;}
