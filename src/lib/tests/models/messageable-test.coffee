@@ -19,28 +19,28 @@ describe 'Models', ->
 			err2 = 'This is another error'
 
 			msg.addError err1
-			
+
 			should.exist msg.messages
 			should.exist msg.messages.errors
-			
+
 			msg.messages.errors.should.be.an.instanceOf Array
 			msg.messages.errors.should.have.length 1
 
 			msg.addError err2
 			msg.messages.errors.should.have.length 2
 
-			msg.messages.errors.should.include err1
-			msg.messages.errors.should.include err2
+			msg.messages.errors.should.containEql err1
+			msg.messages.errors.should.containEql err2
 
 
 		it 'should log warning messages', ->
 			wrn = 'This is a warning'
-			
+
 			msg.addWarning wrn
 
 			should.exist msg.messages.warnings
 			msg.messages.warnings.should.have.length 1
-			msg.messages.warnings.should.include wrn
+			msg.messages.warnings.should.containEql wrn
 
 
 		it 'should log notice messages', ->
@@ -50,7 +50,7 @@ describe 'Models', ->
 
 			should.exist msg.messages.notices
 			msg.messages.notices.should.have.length 1
-			msg.messages.notices.should.include ntc
+			msg.messages.notices.should.containEql ntc
 
 
 		it 'should be inflatable to include empty but defined versions of all message levels', ->
@@ -73,5 +73,5 @@ describe 'Models', ->
 			msg.inflate()
 
 			msg.messages.errors.should.have.length 1
-			msg.messages.errors.should.include err
+			msg.messages.errors.should.containEql err
 
