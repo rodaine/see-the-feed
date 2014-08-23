@@ -65,7 +65,7 @@ describe 'Model', ->
 		it 'should set the feed meta object to an instance of FeedMeta', ->
 			badMeta = {}
 			goodMeta = new FeedMeta
-			
+
 			(-> feed.setMeta badMeta).should.throw()
 
 			feed.setMeta goodMeta
@@ -80,7 +80,7 @@ describe 'Model', ->
 
 			feed.addItem goodArticle
 			feed.items.should.have.length 1
-			feed.items.should.include goodArticle
+			feed.items.should.containEql goodArticle
 
 
 		it 'should have all non-collection properties defined as null', ->
@@ -126,7 +126,7 @@ describe 'Model', ->
 			feed.validateCode.calledOnce.should.be.ok
 			feed.validateItems.calledOnce.should.be.ok
 			feed.validateMeta.calledOnce.should.be.ok
-			
+
 			meta.validate.calledOnce.should.be.ok
 			item1.validate.calledOnce.should.be.ok
 			item2.validate.calledOnce.should.be.ok
@@ -151,7 +151,7 @@ describe 'Model', ->
 
 			feed.addRedirect 'http://www.example.com' for i in [1..3]
 			feed.validateRedirects()
-			feed.messages.warnings.should.have.length 1			
+			feed.messages.warnings.should.have.length 1
 
 
 		it 'should warn if the code is not 200', ->
