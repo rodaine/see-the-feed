@@ -2,5 +2,5 @@
 .sass-cache
 node_modules/
 /lib/
-/seethefeed.com.sublime-project
-/seethefeed.com.sublime-workspace
+*.sublime-project
+*.sublime-workspace
